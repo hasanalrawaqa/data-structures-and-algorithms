@@ -3,8 +3,7 @@
 
 | # | Topic |
 | - | -------- |
-| 1 |[code-challenge1](./python
-/code-challenge1.md) |
+| 1 |[code-challenge1](./python/code-challenge1.md) |
 | 2 | code-challenge2 |
 | 3 | code-challenge3 |
 | 4 | code-challenge4 |
