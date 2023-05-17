@@ -6,7 +6,7 @@
 
 ## Whiteboard Process
 
-![Alt text](../white%20board.png)
+![Alt text](whiteboard.PNG)
 
 ## Approach & Efficiency
 
