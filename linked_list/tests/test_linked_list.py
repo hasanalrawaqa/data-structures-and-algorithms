@@ -119,3 +119,54 @@ def test_kth_from_end_happy_path():
 
     assert ll.kthFromEnd(2) == 3    
 
+# Code Challenge 08 Tests
+
+def test_zip_lists_case1():
+    list1 = LinkedList()
+    list2 = LinkedList()
+    list1.append(1)
+    list1.append(3)
+    list1.append(2)
+    list2.append(5)
+    list2.append(9)
+    list2.append(4)
+
+    result = LinkedList.zip_lists(list1, list2)
+    assert result.to_list() == [1, 5, 3, 9, 2, 4]
+
+
+def test_zip_lists_case2():
+    list1 = LinkedList()
+    list2 = LinkedList()
+    list1.append(1)
+    list1.append(3)
+    list2.append(5)
+    list2.append(9)
+    list2.append(4)
+
+    result = LinkedList.zip_lists(list1, list2)
+    assert result.to_list() == [1, 5, 3, 9, 4]
+
+
+def test_zip_lists_case3():
+    list1 = LinkedList()
+    list2 = LinkedList()
+    list1.append(1)
+    list1.append(3)
+    list1.append(2)
+    list2.append(5)
+    list2.append(9)
+
+    result = LinkedList.zip_lists(list1, list2)
+    assert result.to_list() == [1, 5, 3, 9, 2]
+
+
+def test_zip_lists_case4():
+    list1 = LinkedList()
+    list2 = LinkedList()
+    list1.append(1)
+    list2.append(5)
+
+    result = LinkedList.zip_lists(list1, list2)
+    assert result.to_list() == [1, 5]
+

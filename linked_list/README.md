@@ -1,25 +1,32 @@
-# Challenge 07
+# Challenge 08
 
-The code challenge is to implement a method in a singly linked list class that finds the kth node from the end of the list. The method should take an integer k as a parameter and return the value of the kth node from the end of the list. If k is greater than the length of the list, it should raise an exception. If k is negative or zero, it should raise a ValueError. The challenge also requires writing test cases to ensure the code works as expected.
+The challenge is to merge two linked lists, list1 and list2, by alternating their elements. The goal is to create a new merged linked list, new_list, where the elements from list1 and list2 are arranged in an alternating fashion.
 
 ## Whiteboard Process
 
-![Alt text](whiteboard-linked-list-Kth.PNG)
+![Alt text](zip_lists%20whiteboard.PNG)
 
 ## Approach & Efficiency
 
-The approach to solving the kth from the end of a linked list problem is as follows:
+- ***Approach***:
 
-1. We will use two pointers, slow and fast, initially pointing to the head of the linked list.
-2. Move the fast pointer k positions ahead of the slow pointer.
-3. If the fast pointer reaches the end of the list before k positions, it means that k is greater than the length of the linked list. In this case, we raise an exception.
-4. Move both the slow and fast pointers simultaneously until the fast pointer reaches the end of the list.
-5. The value of the node that the slow pointer is pointing to will be the kth node from the end of the linked list.
+The approach taken in the code is to use two pointers, current_node1 and current_node2, to iterate through list1 and list2 respectively. The algorithm iteratively alternates the next pointers of the nodes in list1 and list2 to achieve the desired merging. It also maintains a separate linked list, new_list, to store the merged elements.
 
-The time complexity of this approach is O(n) because we iterate through the linked list once to reach the kth node from the end.
-The space complexity is O(1) because we are using only two pointers and not creating any additional data structures.
+ The algorithm starts by handling some base cases. If either list1 or list2 is empty, the non-empty list is returned as the merged list. Then, the algorithm initializes the pointers and a few temporary variables.
 
-In terms of efficiency, this approach provides a linear time complexity, which is optimal for this problem. By using two pointers, we avoid the need to traverse the linked list twice or to calculate the length of the list. Thus, we can find the kth node from the end of the linked list in a single pass.
+Next, it enters a while loop that continues until both current_node1 and current_node2 become None. Inside the loop, the algorithm performs the merging steps:
+
+It stores the next nodes of current_node1 and current_node2 in temporary variables.
+It updates the next pointers of current_node1 and current_node2 to alternate their positions.
+It appends the values of current_node1 and current_node2 to the new_list.
+It moves the pointers current_node1 and current_node2 to their respective next nodes using the temporary variables.
+After the loop, the algorithm checks if there are any remaining nodes in either list1 or list2. If so, it appends the remaining nodes to new_list.
+
+- ***Efficiency:***
+
+The time complexity of the algorithm is O(max(N, M)), where N is the length of list1 and M is the length of list2. This is because the algorithm iterates through both linked lists in a single pass, considering the longer list. The operations performed in each iteration, such as updating next pointers and appending to new_list, take constant time.
+
+The space complexity is also O(max(N, M)) because the algorithm creates a new linked list, new_list, to store the merged elements. The space required by new_list is proportional to the length of the longer input list.
 
 ## Solution
 

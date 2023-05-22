@@ -20,6 +20,14 @@ class LinkedList:
             current_node = current_node.next
         return False
 
+    def to_list(self):
+        result = []
+        current = self.head
+        while current:
+            result.append(current.value)
+            current = current.next
+        return result
+
     def append(self, value):
         new_node = Node(value)
         if not self.head:
@@ -81,7 +89,43 @@ class LinkedList:
             fast = fast.next
 
         return slow.value
+
     
+    def zip_lists(list1, list2):
+        if not list1.head:
+            return list2.head
+        if not list2.head:
+            return list1.head
+
+        current_node1 = list1.head
+        current_node2 = list2.head
+        temp1 = None
+        temp2 = None
+        new_list = LinkedList()
+
+        while current_node1 and current_node2:
+            temp1 = current_node1.next
+            temp2 = current_node2.next
+
+            current_node1.next = current_node2
+            current_node2.next = temp1
+            new_list.append(current_node1.value)
+            new_list.append(current_node2.value)
+
+            current_node1 = temp1
+            current_node2 = temp2
+
+        if current_node1:
+            new_list.append(current_node1.value)
+            current_node1 = current_node1.next
+
+        if current_node2:
+            new_list.append(current_node2.value)
+            current_node2 = current_node2.next
+
+        return new_list
+
+
     def __str__(self):
         values = []
         current_node = self.head
@@ -90,6 +134,7 @@ class LinkedList:
             current_node = current_node.next
         values.append("NULL")
         return " -> ".join(values)
+
 
 # create a new linked list
 my_list = LinkedList()
@@ -117,3 +162,20 @@ print(my_list)  # "1 -> 2 -> 2.5 -> 3 -> 4 -> NULL"
 # insert after a value
 my_list.insert_after(2.5, 2.7)
 print(my_list)  # "1 -> 2 -> 2.5 -> 2.7 -> 3 -> 4 -> NULL"
+
+# create another linked list
+list1 = LinkedList()
+list2 = LinkedList()
+
+# populate the linked lists
+list1.insert(1)
+list1.insert(3)
+list1.insert(5)
+
+list2.insert(2)
+list2.insert(4)
+list2.insert(6)
+
+# zip the lists
+result = LinkedList.zip_lists(list1, list2)
+print(result.to_list())  # [5, 6, 3, 4, 1, 2]
