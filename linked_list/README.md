@@ -1,87 +1,32 @@
-# Challenge 06
+# Challenge 08
 
-Write the following methods for the Linked List class:
-
-- append:
-
-arguments: new value
-
-adds a new node with the given value to the end of the list
-
-- insert before
-
-arguments: value, new value
-
-adds a new node with the given new value immediately before the first node that has the value specified
-
-- insert after
-
-arguments: value, new value
-
-adds a new node with the given new value immediately after the first node that has the value specified
-
-## append method
-
-<hr>
+The challenge is to merge two linked lists, list1 and list2, by alternating their elements. The goal is to create a new merged linked list, new_list, where the elements from list1 and list2 are arranged in an alternating fashion.
 
 ## Whiteboard Process
 
-![Alt text](append%20whiteboard.PNG)
+![Alt text](zip_lists%20whiteboard.PNG)
 
 ## Approach & Efficiency
 
-Approach:
-To append a value to the end of the linked list, we traverse the list until we reach the last node. Then, we update the next reference of the last node to point to the new node containing the appended value.
+- ***Approach***:
 
-Efficiency:
+The approach taken in the code is to use two pointers, current_node1 and current_node2, to iterate through list1 and list2 respectively. The algorithm iteratively alternates the next pointers of the nodes in list1 and list2 to achieve the desired merging. It also maintains a separate linked list, new_list, to store the merged elements.
 
-Time complexity: O(n) in the worst case, where n is the number of nodes in the linked list. Since we need to traverse the entire list to reach the end, the time complexity is directly proportional to the size of the list.
-Space complexity: O(1). The append operation only requires creating a new node, so the space complexity is constant.
+ The algorithm starts by handling some base cases. If either list1 or list2 is empty, the non-empty list is returned as the merged list. Then, the algorithm initializes the pointers and a few temporary variables.
 
-## Solution
+Next, it enters a while loop that continues until both current_node1 and current_node2 become None. Inside the loop, the algorithm performs the merging steps:
 
-[link to code](linked_list/linked_list.py)
+It stores the next nodes of current_node1 and current_node2 in temporary variables.
+It updates the next pointers of current_node1 and current_node2 to alternate their positions.
+It appends the values of current_node1 and current_node2 to the new_list.
+It moves the pointers current_node1 and current_node2 to their respective next nodes using the temporary variables.
+After the loop, the algorithm checks if there are any remaining nodes in either list1 or list2. If so, it appends the remaining nodes to new_list.
 
-## insert before 
+- ***Efficiency:***
 
-<hr>
+The time complexity of the algorithm is O(max(N, M)), where N is the length of list1 and M is the length of list2. This is because the algorithm iterates through both linked lists in a single pass, considering the longer list. The operations performed in each iteration, such as updating next pointers and appending to new_list, take constant time.
 
-## Whiteboard Process
-
-![Alt text](insert%20before%20white%20board.PNG)
-
-## Approach & Efficiency
-
-Approach:
-To insert a value before a target value in the linked list, we traverse the list until we find the target value or reach the end. Then, we insert the new node before the target value by updating the next references of the nodes accordingly.
-
-Efficiency:
-
-Time complexity: O(n) in the worst case, where n is the number of nodes in the linked list. If the target value is not found, we need to traverse the entire list. The time complexity is directly proportional to the size of the list.
-Space complexity: O(1). The insert_before operation only requires creating a new node, so the space complexity is constant.
-
-## Solution
-
-[link to code](linked_list/linked_list.py)
-
-
-## insert after
-
-<hr>
-
-## Whiteboard Process
-
-![Alt text](insert%20after%20whiteboard.PNG)
-
-## Approach & Efficiency
-
-Approach:
-To insert a value after a target value in the linked list, we traverse the list until we find the target value or reach the end. Then, we insert the new node after the target value by updating the next references of the nodes accordingly.
-
-Efficiency:
-
-Time complexity: O(n) in the worst case, where n is the number of nodes in the linked list. If the target value is not found, we need to traverse the entire list. The time complexity is directly proportional to the size of the list.
-Space complexity: O(1). The insert_after operation only requires creating a new node, so the space complexity is constant.
+The space complexity is also O(max(N, M)) because the algorithm creates a new linked list, new_list, to store the merged elements. The space required by new_list is proportional to the length of the longer input list.
 
 ## Solution
 
