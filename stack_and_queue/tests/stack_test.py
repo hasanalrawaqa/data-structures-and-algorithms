@@ -37,3 +37,7 @@ def test_pop_empty_stack():
     stack = Stack()
     with pytest.raises(Exception):
         stack.pop()
+        
+def test_instantiate_empty_stack():
+    stack = Stack()
+    assert stack.is_empty() == True
