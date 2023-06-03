@@ -1,5 +1,5 @@
 import pytest
-from linked_list.linked_list import LinkedList
+from linked_list.linked_list import LinkedList, Node
 
 def test_empty_list():
     ll = LinkedList()
@@ -72,4 +72,50 @@ def test_insert_after_last_node():
     ll.insert(1)
     ll.insert_after(3, 3.5)
     assert str(ll) == "1 -> 2 -> 3 -> 3.5 -> NULL"
+    
+    #  Code Challenge 07 Testing:
+    
+def test_kth_from_end_greater_than_length():
+    ll = LinkedList()
+    ll.head = Node(1)
+    ll.head.next = Node(3)
+    ll.head.next.next = Node(8)
+    ll.head.next.next.next = Node(2)
+
+    with pytest.raises(Exception):
+        assert ll.kthFromEnd(6)
+
+def test_kth_from_end_same_as_length():
+    ll = LinkedList()
+    ll.head = Node(1)
+    ll.head.next = Node(3)
+    ll.head.next.next = Node(8)
+    ll.head.next.next.next = Node(2)
+
+    assert ll.kthFromEnd(4) == 1
+
+def test_kth_from_end_not_positive_integer():
+    ll = LinkedList()
+    ll.head = Node(1)
+    ll.head.next = Node(3)
+    ll.head.next.next = Node(8)
+    ll.head.next.next.next = Node(2)
+
+    with pytest.raises(ValueError):
+        assert ll.kthFromEnd(-2)
+
+def test_kth_from_end_size_1():
+    ll = LinkedList()
+    ll.head = Node(5)
+
+    assert ll.kthFromEnd(0) == 5
+
+def test_kth_from_end_happy_path():
+    ll = LinkedList()
+    ll.head = Node(1)
+    ll.head.next = Node(3)
+    ll.head.next.next = Node(8)
+    ll.head.next.next.next = Node(2)
+
+    assert ll.kthFromEnd(2) == 3    
 
