@@ -1,6 +1,20 @@
 from stack  import Stack
 
 class PseudoQueue:
+    """
+    PseudoQueue class implements a queue using two Stacks.
+
+    Methods:
+    - enqueue(value): Inserts a value into the PseudoQueue, using a first-in, first-out approach.
+    - dequeue(): Extracts a value from the PseudoQueue, using a first-in, first-out approach.
+
+    Example Usage:
+    queue = PseudoQueue()
+    queue.enqueue(5)
+    queue.enqueue(10)
+    print(queue.dequeue())  # Output: 5
+    print(queue.dequeue())  # Output: 10
+    """
     def __init__(self):
         self.stack1 = Stack()
         self.stack2 = Stack()
