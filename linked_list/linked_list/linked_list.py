@@ -62,6 +62,26 @@ class LinkedList:
             current_node = current_node.next
         raise ValueError(f"Target value '{target_value}' not found in the linked list.")
 
+    def kthFromEnd(self, k):
+        if k < 0:
+            raise ValueError("k should be a positive integer.")
+
+        if self.head is None:
+            raise Exception("The linked list is empty.")
+
+        slow = fast = self.head
+
+        for _ in range(k):
+            if fast is None:
+                raise Exception("k is greater than the length of the linked list.")
+            fast = fast.next
+
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next
+
+        return slow.value
+    
     def __str__(self):
         values = []
         current_node = self.head
