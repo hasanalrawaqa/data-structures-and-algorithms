@@ -70,6 +70,18 @@ class BinaryTree:
             self.postorder(node.right, result)
             result.append(node.value)
         return result
+        
+    def find_max_value(self):
+        def _find_max(root):
+            if not root:
+                return float('-inf')
+
+            left_max = _find_max(root.left)
+            right_max = _find_max(root.right)
+
+            return max(left_max, right_max, root.value)
+
+        return _find_max(self.root)
 
 
 class BinarySearchTree(BinaryTree):
@@ -116,7 +128,7 @@ if __name__ == "__main__":
     tree.add(3)
     tree.add(5)
     tree.add(7)
-
+    tree.add(4)
     # Test tree traversals
     preorder_traversal = tree.preorder(tree.root, [])
     inorder_traversal = tree.inorder(tree.root, [])

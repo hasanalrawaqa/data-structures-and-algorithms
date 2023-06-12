@@ -1,3 +1,5 @@
+from queue import Queue
+
 class Animal:
     def __init__(self, species, name):
         """
@@ -15,8 +17,8 @@ class AnimalShelter:
         """
         Represents an animal shelter that operates on a first-in, first-out basis.
         """
-        self.dog_queue = []
-        self.cat_queue = []
+        self.dog_queue = Queue()
+        self.cat_queue = Queue()
 
     def enqueue(self, animal):
         """
@@ -29,9 +31,9 @@ class AnimalShelter:
             ValueError: If the animal species is neither "cat" nor "dog".
         """
         if animal.species == "dog":
-            self.dog_queue.append(animal)
+            self.dog_queue.enqueue(animal)
         elif animal.species == "cat":
-            self.cat_queue.append(animal)
+            self.cat_queue.enqueue(animal)
         else:
             raise ValueError("Animal species must be either 'cat' or 'dog'.")
         
@@ -48,10 +50,10 @@ class AnimalShelter:
         """
         if pref == "dog":
             if self.dog_queue:
-                return self.dog_queue.pop(0)
+                return self.dog_queue.dequeue(0)
         elif pref == "cat":
             if self.cat_queue:
-                return self.cat_queue.pop(0)
+                return self.cat_queue.dequeue(0)
 
         return None
 
