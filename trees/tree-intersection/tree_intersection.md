@@ -1,4 +1,4 @@
-# ***Code Challenge: Class 33***
+# ***Code Challenge: Class 32***
 
 ## ***Task: tree_intersection***
 
