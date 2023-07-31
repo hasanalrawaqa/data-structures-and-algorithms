@@ -1,5 +1,6 @@
 # Code Challenge no.30: Hash Tables
 
+
 ## Description
 In this challenge, you are required to implement a Hashtable class with specific methods: `set`, `get`, `has`, `keys`, and `hash`. The Hashtable class should handle collisions using appropriate techniques, such as chaining or open addressing. Additionally, you need to write tests to verify the functionality of each method and ensure that it satisfies the given requirements.
 
