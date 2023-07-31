@@ -1,25 +1,39 @@
-class HashTable:
-    def __init__(self):
-        # Initialize an empty list to store the key-value pairs
-        self.table = []
 
-    def hash(self, key):
-        # Implement your hash function here to convert the key into an index
-        # Return the index
+class HashTable:
+    def __init__(self, size=100):
+        # Initialize the table with a given size (default size is 100)
+        self.size = size
+        self.table = [[] for _ in range(self.size)]
+
+    def __hash(self, key):
+        # Private method to calculate the index for the given key
+        return hash(key) % self.size
 
     def set(self, key, value):
-        index = self.hash(key)
-        # Handle collisions using chaining or other techniques
-        # Update the key-value pair in the table or add a new entry
+        index = self.__hash(key)
+        for item in self.table[index]:
+            if item[0] == key:
+                item[1] = value
+                return
+        self.table[index].append([key, value])
 
     def get(self, key):
-        index = self.hash(key)
-        # Search for the key in the appropriate bucket and return the value if found
-        # Otherwise, return None
+        index = self.__hash(key)
+        for item in self.table[index]:
+            if item[0] == key:
+                return item[1]
+        return None
 
     def has(self, key):
-        index = self.hash(key)
-        # Check if the key exists in the table, return True if found, else False
+        index = self.__hash(key)
+        for item in self.table[index]:
+            if item[0] == key:
+                return True
+        return False
 
     def keys(self):
-        # Return a collection of all unique keys in the hashtable
+        keys_set = set()
+        for bucket in self.table:
+            for item in bucket:
+                keys_set.add(item[0])
+        return list(keys_set)
