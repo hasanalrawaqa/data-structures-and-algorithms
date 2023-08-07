@@ -40,10 +40,9 @@ class HashTable:
 def left_join(synonyms, antonyms):
     result = []
 
-    for key, value in synonyms.items():
-        if key in antonyms:
-            result.append([key, value, antonyms[key]])
-        else:
-            result.append([key, value, None])
+    for key in synonyms:
+        synonym = synonyms[key]
+        antonym = antonyms.get(key, None)  
+        result.append([key, synonym, antonym])
 
     return result
