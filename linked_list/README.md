@@ -1,87 +1,25 @@
-# Challenge 06
+# Challenge 07
 
-Write the following methods for the Linked List class:
-
-- append:
-
-arguments: new value
-
-adds a new node with the given value to the end of the list
-
-- insert before
-
-arguments: value, new value
-
-adds a new node with the given new value immediately before the first node that has the value specified
-
-- insert after
-
-arguments: value, new value
-
-adds a new node with the given new value immediately after the first node that has the value specified
-
-## append method
-
-<hr>
+The code challenge is to implement a method in a singly linked list class that finds the kth node from the end of the list. The method should take an integer k as a parameter and return the value of the kth node from the end of the list. If k is greater than the length of the list, it should raise an exception. If k is negative or zero, it should raise a ValueError. The challenge also requires writing test cases to ensure the code works as expected.
 
 ## Whiteboard Process
 
-![Alt text](append%20whiteboard.PNG)
+![Alt text](whiteboard-linked-list-Kth.PNG)
 
 ## Approach & Efficiency
 
-Approach:
-To append a value to the end of the linked list, we traverse the list until we reach the last node. Then, we update the next reference of the last node to point to the new node containing the appended value.
+The approach to solving the kth from the end of a linked list problem is as follows:
 
-Efficiency:
+1. We will use two pointers, slow and fast, initially pointing to the head of the linked list.
+2. Move the fast pointer k positions ahead of the slow pointer.
+3. If the fast pointer reaches the end of the list before k positions, it means that k is greater than the length of the linked list. In this case, we raise an exception.
+4. Move both the slow and fast pointers simultaneously until the fast pointer reaches the end of the list.
+5. The value of the node that the slow pointer is pointing to will be the kth node from the end of the linked list.
 
-Time complexity: O(n) in the worst case, where n is the number of nodes in the linked list. Since we need to traverse the entire list to reach the end, the time complexity is directly proportional to the size of the list.
-Space complexity: O(1). The append operation only requires creating a new node, so the space complexity is constant.
+The time complexity of this approach is O(n) because we iterate through the linked list once to reach the kth node from the end.
+The space complexity is O(1) because we are using only two pointers and not creating any additional data structures.
 
-## Solution
-
-[link to code](linked_list/linked_list.py)
-
-## insert before 
-
-<hr>
-
-## Whiteboard Process
-
-![Alt text](insert%20before%20white%20board.PNG)
-
-## Approach & Efficiency
-
-Approach:
-To insert a value before a target value in the linked list, we traverse the list until we find the target value or reach the end. Then, we insert the new node before the target value by updating the next references of the nodes accordingly.
-
-Efficiency:
-
-Time complexity: O(n) in the worst case, where n is the number of nodes in the linked list. If the target value is not found, we need to traverse the entire list. The time complexity is directly proportional to the size of the list.
-Space complexity: O(1). The insert_before operation only requires creating a new node, so the space complexity is constant.
-
-## Solution
-
-[link to code](linked_list/linked_list.py)
-
-
-## insert after
-
-<hr>
-
-## Whiteboard Process
-
-![Alt text](insert%20after%20whiteboard.PNG)
-
-## Approach & Efficiency
-
-Approach:
-To insert a value after a target value in the linked list, we traverse the list until we find the target value or reach the end. Then, we insert the new node after the target value by updating the next references of the nodes accordingly.
-
-Efficiency:
-
-Time complexity: O(n) in the worst case, where n is the number of nodes in the linked list. If the target value is not found, we need to traverse the entire list. The time complexity is directly proportional to the size of the list.
-Space complexity: O(1). The insert_after operation only requires creating a new node, so the space complexity is constant.
+In terms of efficiency, this approach provides a linear time complexity, which is optimal for this problem. By using two pointers, we avoid the need to traverse the linked list twice or to calculate the length of the list. Thus, we can find the kth node from the end of the linked list in a single pass.
 
 ## Solution
 
